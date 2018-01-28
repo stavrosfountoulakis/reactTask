@@ -56,3 +56,32 @@ function getPostsOrComments(records = [], paramName, paramId) {
     });
     return recordsToReturn;
 }
+
+
+/**
+ * Function returning the data for the posts of a user
+ * @param   {Object}    req     The request
+ * @param   {Object}    res     The response
+ */
+app.get('/posts/:user_id', (req, res) => {
+    const posts = require(`${dataPathName}posts`).posts || [];
+    let userPosts = [],
+        user = req.params.user_id;
+    winston.log('info', `returning posts for user id: ${user}...`);
+    userPosts = getPostsOrComments(posts, 'user_id', user);
+    res.json(userPosts);
+});
+
+/**
+ * Function returning the data for the comments of a post
+ * @param   {Object}    req     The request
+ * @param   {Object}    res     The response
+ */
+app.get('/comments/:post_id', (req, res) => {
+    const comments = require(`${dataPathName}comments`).comments || [];
+    let post = req.params.post_id,
+        postComments = [];
+    winston.log('info', `returning comments for post id: ${post}...`)
+    postComments = getPostsOrComments(comments, 'post', post);
+    res.json(postComments);
+});
