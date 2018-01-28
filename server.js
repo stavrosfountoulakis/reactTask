@@ -34,3 +34,25 @@ app.get('/users', (req, res) => {
 app.listen(port, () => {
     winston.log('info', `listening to port ${port}`);
 });
+
+/**
+ * Function getting the results for a post get request or a comment post request.
+ * @param   {Objet[]}   records         All available records
+ * @param   {String}    paramName       The name of the param to filter on
+ * @param   {Number}    [paramId]       The id of the param to filter the records by
+ * @return  {Object[]}  the filtered records or all of them if no id is passed   
+ */
+function getPostsOrComments(records = [], paramName, paramId) {
+    let recordsToReturn = [];
+    //if no id is passed, return all records
+    if (_.isEmpty(paramId)) {
+        return records;
+    }
+    //ensure param id is a number
+    paramId = parseInt(paramId, 10);
+
+    recordsToReturn = _.filter(records, (record) => {
+        return record[paramName] === paramId;
+    });
+    return recordsToReturn;
+}
