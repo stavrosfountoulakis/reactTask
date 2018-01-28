@@ -1,0 +1,31 @@
+{
+  "name": "reacttask",
+  "version": "1.0.0",
+  "description": "simple react example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stavrosfountoulakis/reactTask.git"
+  },
+  "keywords": [
+    "react",
+    "test",
+    "example",
+    "express"
+  ],
+  "author": "Stavros Fountoulakis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stavrosfountoulakis/reactTask/issues"
+  },
+  "homepage": "https://github.com/stavrosfountoulakis/reactTask#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "react-router-dom": "^4.2.2",
+    "winston": "^2.4.0"
+  }
+}
